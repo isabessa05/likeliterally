@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: literally_production
-  username: literally
-  password: <%= ENV['LITERALLY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
