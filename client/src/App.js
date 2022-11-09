@@ -1,17 +1,35 @@
 import { useState, useEffect } from "react";
+import Login from './Login'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState([])
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
-
+  function handleLogIn(userLog){
+    fetch('/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userLog),
+    }).then((r) => {
+      if (r.ok) {
+        r.json()
+        .then((userData) => setUser(userData))
+      
+      }
+      else {
+        r.json().then((err) => console.log(err.errors));
+      }
+    })
+  }
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
+   <div>
+    <UserContext.Provider value = {{user, setUser}, {}}>
+    <Login handleLogIn={handleLogIn}/>
+    </UserContext.Provider>
     </div>
   );
 }
