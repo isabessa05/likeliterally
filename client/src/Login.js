@@ -1,4 +1,15 @@
-function Login ({handleLogin}) {
+import {useContext} from 'react'
+import UserContext from './UserContext'
+import PasswordContext from './PasswordContext'
+import ErrorContext from './ErrorContext'
+import UsernameContext from './UsernameContext'
+
+function Login ({handleLogIn}) {
+
+    const {user, setUser} = useContext(UserContext) 
+    const {username, setUsername} = useContext(UsernameContext) 
+    const {password, setPassword} = useContext(PasswordContext) 
+    const {error, setError} = useContext(ErrorContext) 
 
     const allErrors = <h1 key={error}>{error.error}</h1>
 
@@ -8,7 +19,7 @@ function Login ({handleLogin}) {
           username: username,
           password: password
         }
-        handleLogin(userLog)
+        handleLogIn(userLog)
     }
     return (
         <div>
@@ -37,3 +48,5 @@ function Login ({handleLogin}) {
     </div>
     )
 }
+
+export default Login;

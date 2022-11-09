@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import Login from './Login'
+import UserContext from './UserContext'
+import PasswordContext from './PasswordContext'
+import ErrorContext from './ErrorContext'
+import UsernameContext from './UsernameContext'
+import { BrowserRouter, Switch } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function App() {
   const [user, setUser] = useState("")
@@ -7,6 +13,8 @@ function App() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState([])
 
+
+  // Start of the Log In function
   function handleLogIn(userLog){
     fetch('/login', {
       method: "POST",
@@ -18,19 +26,56 @@ function App() {
       if (r.ok) {
         r.json()
         .then((userData) => setUser(userData))
+        //Sets the errors to empty so it will clean the error messages
+        setError([])
       
       }
       else {
-        r.json().then((err) => console.log(err.errors));
+        r.json().then((err) => setError(err));
       }
     })
   }
+
+// End of log in function 
+
+
+//Start of Log Out Function
+
+function handleLogOut() {
+  fetch("/logout", {
+    method: "DELETE",
+  });
+  setUser(null)
+  alert("You are logged out!")
+}
+
+//End of Log Out Function
+  
+  
   return (
-   <div>
-    <UserContext.Provider value = {{user, setUser}, {}}>
+  
+    <BrowserRouter>
+    <UserContext.Provider value = {{user, setUser}}>
+    <UsernameContext.Provider value= {{username, setUsername}}>
+    <PasswordContext.Provider value = {{password, setPassword}}>
+    <ErrorContext.Provider value= {{error, setError}}>
+
+    <div>
+      <NavBar handleLogOut={handleLogOut}/>
+    <Switch>
+    
     <Login handleLogIn={handleLogIn}/>
-    </UserContext.Provider>
+
+
+    </Switch>
     </div>
+    </ErrorContext.Provider>
+    </PasswordContext.Provider>
+    </UsernameContext.Provider>
+    </UserContext.Provider>
+   
+    </BrowserRouter>
+    
   );
 }
 
