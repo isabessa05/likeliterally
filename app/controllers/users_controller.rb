@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         user = User.find_by(id: session[:user_id])
         if user
             user.destroy
-            render json: {"User deleted"} , status: :no_content
+            render json: {} , status: :no_content
         else 
             render json: {error: "User doesn't exist"}, status: :not_found
         end

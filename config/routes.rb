@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :user_books
   resources :user_friends
   resources :posts
   resources :books
@@ -10,8 +11,6 @@ Rails.application.routes.draw do
     
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
-
-  get '/hello', to: 'application#hello_world'
 
   get '*path',
   to: 'fallback#index',

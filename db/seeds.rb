@@ -5,9 +5,9 @@ User.create(first_name:"Ian", last_name:"GH", username:"ianruns", picture:"https
 
 #Books seeds
 
-Book.create(title:"Under the Whispering Door", author:"T.J. Klune", description:"When a reaper comes to collect Wallace from his own funeral, Wallace begins to suspect he might be dead.",genre:"Fiction")
-Book.create(title:"Magic Lessons", author:"Alice Hoffman", genre:"Fantasy",description:"When Maria is abandoned by the man who has declared his love for her, she follows him to Salem, Massachusetts. Here she invokes the curse that will haunt her family. And it’s here that she learns the rules of magic and the lesson that she will carry with her for the rest of her life. Love is the only thing that matters.")
-Book.create(title:"The Farm", author:"Joanne Ramos", genre:"", description:"Jane, an immigrant from the Philippines and a struggling single mother, is thrilled to make it through the highly competitive Host selection process at the Farm. But now pregnant, fragile, consumed with worry for her own young daughter's well-being, Jane grows desperate to reconnect with her life outside. Yet she cannot leave the Farm or she will lose the life-changing fee she'll receive on delivery—or worse.")
+Book.create(title:"Under the Whispering Door", author:"T.J. Klune", description:"When a reaper comes to collect Wallace from his own funeral, Wallace begins to suspect he might be dead.")
+Book.create(title:"Magic Lessons", author:"Alice Hoffman",description:"When Maria is abandoned by the man who has declared his love for her, she follows him to Salem, Massachusetts. Here she invokes the curse that will haunt her family. And it’s here that she learns the rules of magic and the lesson that she will carry with her for the rest of her life. Love is the only thing that matters.")
+Book.create(title:"The Farm", author:"Joanne Ramos", description:"Jane, an immigrant from the Philippines and a struggling single mother, is thrilled to make it through the highly competitive Host selection process at the Farm. But now pregnant, fragile, consumed with worry for her own young daughter's well-being, Jane grows desperate to reconnect with her life outside. Yet she cannot leave the Farm or she will lose the life-changing fee she'll receive on delivery—or worse.")
 Book.create(title:"The School for Good Mothers", author:"Jessamine Chan", description:"This propulsive, witty page-turner explores the perils of “perfect” upper-middle-class parenting, the violence enacted upon women by the state and each other, and the boundless love a mother has for her daughter.")
 Book.create(title:"Amen Maxine", author:"Faith Gardner", description:"This domestic suspense novel set in a near-future dystopia asks, who do you trust more—your mind, your man, or your machine?")
 Book.create(title:"Love, Lists, and Fancy Ships", author:"Sarah Grunder Ruiz", description:"For the last year, yacht stewardess Jo Walker has been attempting to complete a bucket list of thirty things she wants to accomplish by her birthday. Jo has almost everything she's ever wanted, including a condo on the beach (though she's the youngest resident by thirty years) and an exciting job (albeit below deck) that lets her travel the world.Jo is on track until a family tragedy turns her life upside down, and the list falls by the wayside. But when her two nieces show up unannounced with plans to stay the summer, they discover her list and insist on helping Jo finish it. Though the remaining eight items (which include running a marathon, visiting ten countries, and sleeping in a castle) seem impossible to complete in twelve weeks, Jo takes on the challenge.When she summons the courage to complete item number five--kiss a stranger--and meets Alex Hayes, all bets are off. As her feelings for Alex intensify and Jo's inability to confront difficult emotions about her family complicates her relationships, she must learn to quit playing it safe with her heart before she loses what matters most.")
@@ -19,20 +19,55 @@ Book.create(title:"Out", author:"Natsuo Kirino", description:"The complex yet ri
 
 #Posts seeds
 
-Post.create(page:3, user_id:2, book_id:2,quote:"this is a good scene")
-Post.create(page:45, user_id:3, book_id:5,quote:"wow wth happened here")
-Post.create(page:89, user_id:1, book_id:7,quote:"he did what??????")
-Post.create(page:2, user_id:1, book_id:5,quote:"SHE DID WHAT???????????")
-Post.create(page:100, user_id:2, book_id:6,quote:"this scene goes really well with a taylor swift song")
-Post.create(page:23, user_id:3, book_id:9,quote:"")
-Post.create(page:234, user_id:3, book_id:11,quote:"")
-Post.create(page:55, user_id:2, book_id:1,quote:"")
-Post.create(page:56, user_id:1, book_id:3,quote:"")
-Post.create(page:89, user_id:1, book_id:10,quote:"")
-Post.create(page:17, user_id:2, book_id:8,quote:"")
+Post.create(page:3, user_id:2, book_title:"The Farm",quote:"this is a good scene")
+Post.create(page:45, user_id:3, book_title:"Love, Lists, and Fancy Ships",quote:"wow wth happened here")
+Post.create(page:89, user_id:1, book_title:"Out",quote:"he did what??????")
+Post.create(page:2, user_id:1, book_title:"Getting Clean With Stevie Green",quote:"SHE DID WHAT???????????")
+Post.create(page:100, user_id:2, book_title:"Amen Maxine",quote:"this scene goes really well with a taylor swift song")
+Post.create(page:23, user_id:3, book_title:"Permanent Record",quote:"he did what??????")
+Post.create(page:234, user_id:3, book_title:"Love, Lists, and Fancy Ships",quote:"he did what??????")
+Post.create(page:55, user_id:2, book_title:"Amen Maxine",quote:"he did what??????")
+Post.create(page:56, user_id:1, book_title:"Out",quote:"he did what??????")
+Post.create(page:89, user_id:1, book_title:"Getting Clean With Stevie Green",quote:"he did what??????")
+Post.create(page:17, user_id:2, book_title:"Permanent Record",quote:"he did what??????")
 
 
-#User_friends seed
+#User_books seed
+
+UserBook.create(user_id:1,book_id:1)
+UserBook.create(user_id:1,book_id:2)
+UserBook.create(user_id:1,book_id:3)
+UserBook.create(user_id:1,book_id:4)
+UserBook.create(user_id:1,book_id:5)
+UserBook.create(user_id:1,book_id:6)
+UserBook.create(user_id:1,book_id:7)
+UserBook.create(user_id:1,book_id:8)
+UserBook.create(user_id:1,book_id:9)
+UserBook.create(user_id:1,book_id:10)
+UserBook.create(user_id:1,book_id:11)
+UserBook.create(user_id:2,book_id:1)
+UserBook.create(user_id:2,book_id:2)
+UserBook.create(user_id:2,book_id:3)
+UserBook.create(user_id:2,book_id:4)
+UserBook.create(user_id:2,book_id:5)
+UserBook.create(user_id:2,book_id:6)
+UserBook.create(user_id:2,book_id:7)
+UserBook.create(user_id:2,book_id:8)
+UserBook.create(user_id:2,book_id:9)
+UserBook.create(user_id:2,book_id:10)
+UserBook.create(user_id:2,book_id:11)
+UserBook.create(user_id:3,book_id:1)
+UserBook.create(user_id:3,book_id:2)
+UserBook.create(user_id:3,book_id:3)
+UserBook.create(user_id:3,book_id:4)
+UserBook.create(user_id:3,book_id:5)
+UserBook.create(user_id:3,book_id:6)
+UserBook.create(user_id:3,book_id:7)
+UserBook.create(user_id:3,book_id:8)
+UserBook.create(user_id:3,book_id:9)
+UserBook.create(user_id:3,book_id:10)
+UserBook.create(user_id:3,book_id:11)
+
 
 
 puts "Seeding done!"
