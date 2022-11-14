@@ -8,6 +8,11 @@ class PostsController < ApplicationController
         render json: posts, status: :ok
     end
 
+    def bookposts
+        posts = Post.where(book_title: params[:book_title])
+        render json: posts, status: :ok
+    end
+
     def show #this is not really a show, but a custom action to get the posts based on the user id
         posts = Post.where(user_id: params[:id])
         if posts

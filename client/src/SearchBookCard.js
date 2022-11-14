@@ -42,19 +42,11 @@ function SearchBookCard({ book, updatePosts }) {
             res.json().then((data) => console.log(data))}
             else {res.json().then((err) => console.log(err));}
         })
-            updatePosts(user.books)
         }
         
         function addBook() {
             addToBookList();
         }
-
-     
-    
-    
-
-
-
 
     return (
         <div className='column'>

@@ -1,9 +1,16 @@
 import './PostCard.css'
 import Popup from 'reactjs-popup';
+import {useState} from 'react'
+import PopUpPosts from './PopUpPosts';
+
 function BookCard({book}) {
 
+    const [isClicked, setIsClicked] = useState(false)
 
-
+    function handlePopUp() {
+        
+        setIsClicked(!isClicked)
+    }
 
     return (
 
@@ -14,7 +21,9 @@ function BookCard({book}) {
                 <span> {book.description} </span>
                 <br></br>
                 <br></br>
-            
+                <button onClick={handlePopUp}> See all posts </button>
+                {isClicked? <PopUpPosts isClicked={isClicked} handlePopUp={handlePopUp} book={book}/> : null }
+                <button>  🗑 </button>
             </div>
         </div>
     )

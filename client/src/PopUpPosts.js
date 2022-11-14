@@ -1,9 +1,32 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
-// import 'reactjs-popup/dist/index.css';
+import PostCard from './PostCard';
+import './PopUp.css'
+import {useEffect, useState} from 'react'
+
+function PopUpPosts({isClicked, handlePopUp, book }) {
+
+    const [posts, setPosts] = useState([])
+    useEffect(() => {
+        fetch(`/bookposts/${book.title}`).then((response) => 
+            response.json()).then((data) => setPosts(data));
+          }
+      , []);
+
+    if (!isClicked) return null;
+
+    const displayPosts = posts.map((post) => {
+        return <PostCard  post={post}  />
+    })
+
+    return (
+        <div className='overlay'>
+            <div className='modalContainer'>
+            {displayPosts}
+            <button onClick={handlePopUp}> X </button>
+            </div>
+        </div>
+    )
+}
 
 
-
-export default () => ( <Popup trigger={<button> Trigger</button>} position="right center">
-<div>Popup content here !!</div>
-</Popup> );
+export default PopUpPosts;
