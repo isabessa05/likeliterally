@@ -5,7 +5,7 @@ class UserBooksController < ApplicationController
     end
 
     def create
-        userbook = UserBooks.create(user_id: session[:user_id], book_id: params[:book_id])
+        userbook = UserBook.create(user_id: params[:user_id], book_id: params[:book_id])
         if userbook.valid?
             render json: userbook, status: :created
         else 

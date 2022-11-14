@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_many :user_books
     has_many :books, through: :user_books
 
-    validates :first_name, :last_name, :picture, :username, :password, presence: true
+    # validates :first_name, :last_name, :picture, :username, presence: true
     validates :username, uniqueness: true
 
 

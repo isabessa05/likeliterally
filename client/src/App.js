@@ -10,6 +10,7 @@ import SignUp from "./SignUp";
 import Home from "./Home";
 import Profile from "./Profile";
 import Feed from "./Feed";
+import Books from "./Books";
 
 
 function App() {
@@ -64,6 +65,8 @@ function App() {
     alert("You are logged out!")
   }
 
+  //REDIRECTION HERE
+
   //End of Log Out Function
 
   //Start of Sign Up Function
@@ -86,6 +89,7 @@ function App() {
     });
   }
 
+  //REDIRECTION HERE
 
   //End of Sign Up Function
 
@@ -136,6 +140,9 @@ function App() {
                   </Route>
                   <Route exact path='/feed'>
                     <Feed handlePosts={handlePosts} />
+                  </Route>
+                  <Route exact path ='/books'>
+                    <Books/>
                   </Route>
 
 

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "reactjs-popup": "^2.0.5",
+    "superagent": "^8.0.3"
+  }
+}

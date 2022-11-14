@@ -18,7 +18,7 @@ class BooksController < ApplicationController
     end
 
     def create
-        book = Book.create(title: params[:title], author: params[:author], description: params[:description], genre: params[:genre])
+        book = Book.create(title: params[:title], author: params[:author], description: params[:description])
         if book.valid?
             render json: book, status: :created
         else
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        book = Book.find_by(title: params[:title])
+        book = Book.find_by(id: params[:id])
         if book
             book.destroy
             render json: {}, status: :no_content

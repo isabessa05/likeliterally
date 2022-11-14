@@ -1,5 +1,5 @@
 
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import UserContext from './UserContext'
 import ErrorContext from './ErrorContext'
 function SignUp({handleSignUp}){
@@ -7,6 +7,9 @@ function SignUp({handleSignUp}){
     //UseContext variables
     const {user, setUser} = useContext(UserContext) 
     const {error, setError} = useContext(ErrorContext)
+
+
+   
 
     //UseState Variables
     const [username, setUsername] = useState("");
