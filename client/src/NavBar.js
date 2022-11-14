@@ -14,7 +14,7 @@ function NavBar ({handleLogOut}) {
         {user? null : <Link to="/login"> Log In   </Link>}
         {user? null : <Link to="/signup"> Sign Up </Link>}
         {/* Will only show the log out button if the user is logged in */}
-        {user? <Link onClick={handleLogOut}>Log Out</Link> : null}
+        {user? <Link onClick={handleLogOut} to="/home">Log Out</Link> : null}
         {user? <Link to="/profile"> My Profile </Link> : null}
         {user? <Link to='/books'> My Books </Link> : null}
         {user? <Link to='/feed'> Feed </Link> : null }

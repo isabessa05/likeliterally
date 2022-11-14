@@ -4,13 +4,14 @@ import UserContext from './UserContext'
 import PasswordContext from './PasswordContext'
 import ErrorContext from './ErrorContext'
 import UsernameContext from './UsernameContext'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import NavBar from "./NavBar";
 import SignUp from "./SignUp";
 import Home from "./Home";
 import Profile from "./Profile";
 import Feed from "./Feed";
 import Books from "./Books";
+import { useRedirect } from 'react-admin';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState([])
 
+  const history = useHistory();
 
   //Fetch for permanence of logged user
   useEffect(() => {
@@ -64,8 +66,6 @@ function App() {
     setUser(null)
     alert("You are logged out!")
   }
-
-  //REDIRECTION HERE
 
   //End of Log Out Function
 

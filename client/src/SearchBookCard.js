@@ -39,7 +39,7 @@ function SearchBookCard({ book, updatePosts }) {
             },
             body: JSON.stringify(newUserBook)}).then((res) => {
                 if (res.ok) {
-            res.json().then((data) => console.log(data))}
+            res.json().then((data) => setUser(data.user))}
             else {res.json().then((err) => console.log(err));}
         })
         }
