@@ -11,7 +11,6 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Feed from "./Feed";
 import Books from "./Books";
-import { useRedirect } from 'react-admin';
 
 
 function App() {
@@ -19,8 +18,6 @@ function App() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState([])
-
-  const history = useHistory();
 
   //Fetch for permanence of logged user
   useEffect(() => {

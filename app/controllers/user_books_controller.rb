@@ -14,7 +14,7 @@ class UserBooksController < ApplicationController
     end
 
     def show
-        userbook = Userbook.find_by(id: params[:id])
+        userbook = UserBook.where(user_id: params[:id])
         if userbook
           render json: userbook, status: :ok
         else
@@ -24,7 +24,8 @@ class UserBooksController < ApplicationController
 
 
     def destroy
-        userbook = UserBook.find_by(id: params[:id])
+        userbookDestroy = UserBook.find_by(book_id: params[:id], user_id: session[:user_id])
+        userbook = UserBook.find_by(id: userbookDestroy.id)
         if userbook
             userbook.destroy
             render json: {} , status: :no_content

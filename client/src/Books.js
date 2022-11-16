@@ -10,6 +10,15 @@ function Books() {
     const [search, setSearch] = useState("")
     const [bookData, setBookData] = useState([])
     const [userBooks, setUserBooks] = useState(user.books)
+    // const [books, setBooks] = useState([])
+
+    // useEffect(() => {
+    //     fetch(`/user_books/${user.id}`).then((response) =>
+    //         response.json()).then((data) => setBooks(data));
+    //     const booksArray = books.map((item) => { return setUserBooks(item.book) })
+    // }, []);
+
+
 
     function searchData(e) {
         setSearch(e.target.value);
@@ -21,28 +30,41 @@ function Books() {
             })
 
     }
-    // function updatePosts() {
-    //     setUserBooks(user.books)
-    // }
+    function updatePosts(newBooks) {
+        console.log(newBooks.book_id)
+        let newBooksArray = userBooks.filter(el => el.id == newBooks.book_id)
+        console.log(newBooksArray)
+    }
 
-    console.log(search)
-    console.log(bookData)
+    function deleteBook(bookId) {
+        fetch(`/user_books/${bookId}`,
+            { method: 'DELETE' });
+        let newArray = userBooks.filter(el => el.id !== bookId)
+        console.log(newArray)
+        setUserBooks(newArray)
+    }
+
+    // console.log(search)
+    // console.log(bookData)
 
     // const searchFilter = search.map((item) => console.log(item))
-    
+
     const displayBooks = userBooks.map((book) => {
-        return <BookCard key={book.title} book={book} />
+        return <BookCard key={book.title} book={book} deleteBook={deleteBook} />
     })
+
+    console.log(userBooks)
+    // console.log(displayBooks)
 
     const displaySearchedBooks = bookData.map((book) => {
-        return <SearchBookCard book={book.volumeInfo}/>
+        return <SearchBookCard book={book.volumeInfo} updatePosts={updatePosts} />
     })
 
 
-    console.log(displaySearchedBooks)
+    // console.log(displaySearchedBooks)
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#d6dfcc', backgroundSize:"cover", height:'450vh',width:'100vw'}}>
             <h1>My Books</h1>
             <input onChange={searchData} type='textarea' position='left center' placeholder='Search books' />
             {search === ("") ? displayBooks : displaySearchedBooks}

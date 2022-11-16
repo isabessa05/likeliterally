@@ -1,7 +1,9 @@
 
 import {useState, useContext, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import UserContext from './UserContext'
 import ErrorContext from './ErrorContext'
+import background from './background.svg'
 function SignUp({handleSignUp}){
  
     //UseContext variables
@@ -17,6 +19,9 @@ function SignUp({handleSignUp}){
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("")
     const [picture, setPicture] = useState("")
+
+
+    const history = useHistory();
     
 
     const allErrors = <h1 key={error}>{error.error}</h1>
@@ -25,6 +30,7 @@ function SignUp({handleSignUp}){
 
     function handleSubmit(e) {
       e.preventDefault();
+      history.push('/home')
       const newUser = {
         first_name: firstName,
         last_name: lastName,
@@ -38,7 +44,8 @@ function SignUp({handleSignUp}){
 }
 
     return (
-        <div>
+        <div style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
+        height:'99vh',width:'100vw'}}>
           <form onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
             <label htmlFor="firstname">First Name</label>

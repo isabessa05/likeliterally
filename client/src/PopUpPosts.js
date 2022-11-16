@@ -6,6 +6,8 @@ import {useEffect, useState} from 'react'
 function PopUpPosts({isClicked, handlePopUp, book }) {
 
     const [posts, setPosts] = useState([])
+    
+    //This useEffect allows me to update the posts inside the books everytime I add a new post
     useEffect(() => {
         fetch(`/bookposts/${book.title}`).then((response) => 
             response.json()).then((data) => setPosts(data));

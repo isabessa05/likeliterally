@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 import {useState} from 'react'
 import PopUpPosts from './PopUpPosts';
 
-function BookCard({book}) {
+function BookCard({book, deleteBook}) {
 
     const [isClicked, setIsClicked] = useState(false)
 
@@ -11,6 +11,11 @@ function BookCard({book}) {
         
         setIsClicked(!isClicked)
     }
+
+    function handleClick(){
+        deleteBook(book.id)
+    }
+
 
     return (
 
@@ -23,7 +28,7 @@ function BookCard({book}) {
                 <br></br>
                 <button onClick={handlePopUp}> See all posts </button>
                 {isClicked? <PopUpPosts isClicked={isClicked} handlePopUp={handlePopUp} book={book}/> : null }
-                <button>  🗑 </button>
+                <button onClick={handleClick} >  🗑 </button>
             </div>
         </div>
     )

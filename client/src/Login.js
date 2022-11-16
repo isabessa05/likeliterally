@@ -1,8 +1,11 @@
 import {useContext} from 'react'
+// import './Login.css'
 import UserContext from './UserContext'
 import PasswordContext from './PasswordContext'
 import ErrorContext from './ErrorContext'
 import UsernameContext from './UsernameContext'
+import background from './background.svg'
+import './MainCss.css'
 
 function Login ({handleLogIn}) {
 
@@ -22,9 +25,11 @@ function Login ({handleLogIn}) {
         handleLogIn(userLog)
     }
     return (
-        <div>
+        <div className='centered' style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
+        height:'99vh',width:'100vw'}}>
         <form onSubmit={handleSubmitLogIn}>
-        <h1>Login</h1>
+          <div className='form-field'>
+        <h1>Welcome back!</h1>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -33,6 +38,8 @@ function Login ({handleLogIn}) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        </div>
+        <div className='form-field'>
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -41,10 +48,11 @@ function Login ({handleLogIn}) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        </div>
+        <div className='form-field'>
+        <button className='btn' type="submit">Login</button>
+        </div>
       </form>
-      {user? <h1>Welcome {user.first_name}</h1> : null}
-      {error? allErrors : null }
     </div>
     )
 }

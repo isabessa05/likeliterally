@@ -1,5 +1,6 @@
 import './PostCard.css'
 import {useContext, useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import UserContext from './UserContext'
 
 function SearchBookCard({ book, updatePosts }) {
@@ -8,6 +9,8 @@ function SearchBookCard({ book, updatePosts }) {
     const [bookInstance, setBookInstance] = useState("")
 
     const bookTitle = book.title
+    const history = useHistory();
+    
     
 
     function addToBookList() {
@@ -39,13 +42,14 @@ function SearchBookCard({ book, updatePosts }) {
             },
             body: JSON.stringify(newUserBook)}).then((res) => {
                 if (res.ok) {
-            res.json().then((data) => setUser(data.user))}
+            res.json().then((data) => updatePosts(data))}
             else {res.json().then((err) => console.log(err));}
         })
         }
         
         function addBook() {
             addToBookList();
+          
         }
 
     return (

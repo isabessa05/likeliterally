@@ -86,7 +86,7 @@ function Feed({ handlePosts }) {
 
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#d6dfcc', backgroundSize:"cover", height:'450vh',width:'100vw'}}>
             <form onSubmit= {(e) => handleSubmit(e)}>
             <h1> Welcome to your feed </h1>
             <input type="textarea" id="password" value={quote} onChange={handleChangeQuote} placeholder='What is happening?' />

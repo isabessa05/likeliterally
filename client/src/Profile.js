@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import UserContext from "./UserContext";
+import background from './background.svg'
+import './MainCss.css'
 
 function Profile() {
 
@@ -61,7 +63,9 @@ function Profile() {
 
 
     return (
-        <div>
+        <div style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
+        height:'99vh',width:'100vw'}}>
+            <div className="centered">
             <img src={user.picture} />
             <h1>{user.first_name}</h1>
             <h2>{user.totalbooks}</h2>
@@ -70,7 +74,7 @@ function Profile() {
             <button onClick={handleDelete}> Delete Profile </button>
             {isPicClicked ? <form onSubmit={changePicture}> <input type="textarea" id="password" value={picture} onChange={handlePictureChange} placeholder='Image URL' /> <button> Send </button> </form> : null}
 
-
+            </div>
         </div>
     )
 }
