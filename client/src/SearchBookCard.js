@@ -56,7 +56,7 @@ function SearchBookCard({ book, updatePosts }) {
         <div className='column'>
             <div className="card">
                 <h2> {book.title} </h2>
-                <p> {book.authors} </p>
+                <h3> {book.authors} </h3>
                 <span> {book.description} </span>
                 <br></br>
                 <br></br>
