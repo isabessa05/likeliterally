@@ -22,7 +22,7 @@ function BookCard({book, deleteBook}) {
     <div className='column'>
             <div className="card">
                 <h2> {book.title} </h2>
-                <p> {book.author} </p>
+                <h3> {book.author} </h3>
                 <span> {book.description} </span>
                 <br></br>
                 <br></br>

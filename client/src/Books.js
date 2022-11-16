@@ -65,8 +65,19 @@ function Books() {
 
     return (
         <div style={{ backgroundColor: '#d6dfcc', backgroundSize:"cover", height:'450vh',width:'100vw'}}>
-            <h1>My Books</h1>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div style={{display: 'flex',  justifyContent:'center'}}>
+            <h1 >My Books</h1>
             <input onChange={searchData} type='textarea' position='left center' placeholder='Search books' />
+            </div>
             {search === ("") ? displayBooks : displaySearchedBooks}
         </div>
 

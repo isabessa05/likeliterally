@@ -67,15 +67,16 @@ function Profile() {
         height:'99vh',width:'100vw'}}>
             <div className="centered">
             <img src={user.picture} />
-            <h1>{user.first_name}</h1>
-            <h2>{user.totalbooks}</h2>
-
+            <div></div>
+            <ul>
+            <h1>{user.first_name} {user.last_name}</h1>
+            <h2>{user.totalbooks} books and couting! </h2>
             <button onClick={picClick}> Change Profile Picture </button>
-            <button onClick={handleDelete}> Delete Profile </button>
             {isPicClicked ? <form onSubmit={changePicture}> <input type="textarea" id="password" value={picture} onChange={handlePictureChange} placeholder='Image URL' /> <button> Send </button> </form> : null}
-
+            <button onClick={handleDelete}> Delete Profile </button>
+            </ul>
             </div>
-        </div>
+            </div>
     )
 }
 

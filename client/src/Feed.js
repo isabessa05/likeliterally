@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import UserContext from './UserContext'
 import PostCard from './PostCard'
 import './PostCard.css'
+import './MainCss.css'
 
 
 
@@ -87,6 +88,15 @@ function Feed({ handlePosts }) {
 
     return (
         <div style={{ backgroundColor: '#d6dfcc', backgroundSize:"cover", height:'450vh',width:'100vw'}}>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div style={{display: 'flex',  justifyContent:'center'}}>
             <form onSubmit= {(e) => handleSubmit(e)}>
             <h1> Welcome to your feed </h1>
             <input type="textarea" id="password" value={quote} onChange={handleChangeQuote} placeholder='What is happening?' />
@@ -97,6 +107,7 @@ function Feed({ handlePosts }) {
             </select>
             <button> Post! </button>
             </form>
+            </div>
             <br></br>
             <br></br>
             {user ? displayPosts : null}

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import UserContext from './UserContext'
 import ErrorContext from './ErrorContext'
 import background from './background.svg'
+import './MainCss.css'
 function SignUp({handleSignUp}){
  
     //UseContext variables
@@ -44,8 +45,9 @@ function SignUp({handleSignUp}){
 }
 
     return (
-        <div style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
+        <div className='centered' style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
         height:'99vh',width:'100vw'}}>
+          <div className='form-field'>
           <form onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
             <label htmlFor="firstname">First Name</label>
@@ -90,6 +92,7 @@ function SignUp({handleSignUp}){
             />
             <button href="www.google.com" type="submit">Sign Up</button>
           </form>
+          </div>
           {error? allErrors : null}
         </div>
       )
