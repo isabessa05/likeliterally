@@ -31,57 +31,66 @@ function Books() {
 
     }
     function updatePosts(newBooks) {
-        console.log(newBooks.book_id)
-        let newBooksArray = userBooks.filter(el => el.id == newBooks.book_id)
-        console.log(newBooksArray)
+        setSearch("")
+        // console.log(newBooks.book_id)
+        // let newBooksArray = userBooks.filter(el => el.id == newBooks.book_id)
+        // console.log(newBooksArray)
+        fetch("/me").then((response) => {
+            if (response.ok) {
+                response.json().then((user) => setUserBooks(user.books));
+            }
+        });
     }
 
-    function deleteBook(bookId) {
-        fetch(`/user_books/${bookId}`,
-            { method: 'DELETE' });
-        let newArray = userBooks.filter(el => el.id !== bookId)
-        console.log(newArray)
-        setUserBooks(newArray)
-    }
 
-    // console.log(search)
-    // console.log(bookData)
+function deleteBook(bookId) {
+    fetch(`/user_books/${bookId}`,
+        { method: 'DELETE' });
+    let newArray = userBooks.filter(el => el.id !== bookId)
+    console.log(newArray)
+    setUserBooks(newArray)
+}
 
-    // const searchFilter = search.map((item) => console.log(item))
+// console.log(search)
+// console.log(bookData)
 
-    const displayBooks = userBooks.map((book) => {
-        return <BookCard key={book.title} book={book} deleteBook={deleteBook} />
-    })
+// const searchFilter = search.map((item) => console.log(item))
 
-    console.log(userBooks)
-    // console.log(displayBooks)
+const displayBooks = userBooks.map((book) => {
+    return <BookCard key={book.title} book={book} deleteBook={deleteBook} />
+})
 
-    const displaySearchedBooks = bookData.map((book) => {
-        return <SearchBookCard book={book.volumeInfo} updatePosts={updatePosts} />
-    })
+console.log(userBooks)
+// console.log(displayBooks)
+
+const displaySearchedBooks = bookData.map((book) => {
+    return <SearchBookCard book={book.volumeInfo} updatePosts={updatePosts} />
+})
 
 
-    // console.log(displaySearchedBooks)
+// console.log(displaySearchedBooks)
 
-    return (
-        <div style={{ backgroundColor: '#d6dfcc', backgroundSize:"cover", height:'450vh',width:'100vw'}}>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <div style={{display: 'flex',  justifyContent:'center'}}>
-            <h1 >My Books</h1>
-            <input onChange={searchData} type='textarea' position='left center' placeholder='Search books' />
-            </div>
-            {search === ("") ? displayBooks : displaySearchedBooks}
+return (
+    <div style={{ backgroundColor: '#d6dfcc', backgroundSize: "cover", height: '450vh', width: '100vw' }}>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <ul>
+                <h1 style={{ fontSize: 50 }}>My Books</h1>
+                <input style={{ width: '20vw' }} onChange={searchData} type='textarea' position='left center' placeholder='Search books' />
+            </ul>
         </div>
+        {search === ("") ? displayBooks : displaySearchedBooks}
+    </div>
 
-    )
+)
 }
 
 export default Books;

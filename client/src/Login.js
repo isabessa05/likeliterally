@@ -58,7 +58,7 @@ function Login({ handleLogIn }) {
           />
         </div>
         <div className='form-field'>
-          <button className='btn' type="submit">Login</button>
+          <button className='button-33' type="submit">Login</button>
         </div>
       </form>
     </div>

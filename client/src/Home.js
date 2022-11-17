@@ -1,6 +1,6 @@
 import {useContext} from 'react'
 import UserContext from './UserContext'
-import background from './background.svg'
+import background from './homebackground.jpeg'
 import './MainCss.css'
 function Home(){
 
@@ -14,7 +14,7 @@ function Home(){
         }}>
             <div className='centered'>
             <br></br>
-            <>{user? <h1>Welcome to literally, {user.first_name}</h1> : <h1>Please log in or Sign Up</h1>} </>
+            <>{user? <h1>Welcome {user.first_name}</h1> : <h1>Please log in or Sign Up</h1>} </>
             </div>
         </div>
     )

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import UserContext from "./UserContext";
 import background from './background.svg'
 import './MainCss.css'
+import './ImageCss.css'
 
 function Profile() {
 
@@ -61,19 +62,17 @@ function Profile() {
     //End of deleting user function
 
 
-
     return (
         <div style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
         height:'99vh',width:'100vw'}}>
             <div className="centered">
-            <img src={user.picture} />
-            <div></div>
             <ul>
-            <h1>{user.first_name} {user.last_name}</h1>
-            <h2>{user.totalbooks} books and couting! </h2>
-            <button onClick={picClick}> Change Profile Picture </button>
+            <img className='framed' src={user.picture} />
+            <h1 style={{fontSize: 60}}>{user.first_name} {user.last_name}</h1>
+            <h2 style={{fontSize: 40}}>{user.totalbooks} books and couting! </h2>
+            <button className="button-33" onClick={picClick}> Change Profile Picture </button>
             {isPicClicked ? <form onSubmit={changePicture}> <input type="textarea" id="password" value={picture} onChange={handlePictureChange} placeholder='Image URL' /> <button> Send </button> </form> : null}
-            <button onClick={handleDelete}> Delete Profile </button>
+            <button className="button-33" onClick={handleDelete}> Delete Profile </button>
             </ul>
             </div>
             </div>

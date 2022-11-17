@@ -14,6 +14,13 @@ function Feed({ handlePosts }) {
     const [page, setPage] = useState("")
     const [book, setBook] = useState("")
 
+    useEffect(() => {
+        fetch("/me").then((response) => {
+          if (response.ok) {
+            response.json().then((user) => setUser(user));
+          }
+        });
+      }, []);
 
     //show all errors
     const allErrors = <h1 key={error}>{error.error}</h1>
@@ -98,14 +105,14 @@ function Feed({ handlePosts }) {
             <br></br>
             <div style={{display: 'flex',  justifyContent:'center'}}>
             <form onSubmit= {(e) => handleSubmit(e)}>
-            <h1> Welcome to your feed </h1>
+            <h1 style={{fontSize: 50}}> Welcome to your feed </h1>
             <input type="textarea" id="password" value={quote} onChange={handleChangeQuote} placeholder='What is happening?' />
             <input type="textarea" id="password" value={page} onChange={handleChangePage} placeholder='Page N' />
             <select className="form-control" onChange= {handleChangeBook} >
                 <option>Select Book</option>
                 {user? userBooks.map(item => (<option value={item.name} key={item.id} >{item.title}</option>)) : null}
             </select>
-            <button> Post! </button>
+            <button className='button-33'> Post! </button>
             </form>
             </div>
             <br></br>

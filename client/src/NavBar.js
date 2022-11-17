@@ -38,13 +38,13 @@ function NavBar({ handleLogOut }) {
             <div class="full-page-green"></div>
             <div class="ham-menu">
                 <ul class="centre-text bold-text">
-                <Link to="/home">  Home  </Link>
-                {user? null : <Link to="/login"> Log In   </Link>}
-                {user? null : <Link to="/signup"> Sign Up </Link>}
-                {user? <Link onClick={handleLogOut} to="/home">Log Out</Link> : null}
-                {user? <Link to="/profile"> My Profile </Link> : null}
-                {user? <Link to='/books'> My Books </Link> : null}
-                {user? <Link to='/feed'> Feed </Link> : null }
+                <Link to="/home" className='link'>  Home  </Link>
+                {user? null : <Link to="/login" className='link'> Log In   </Link>}
+                {user? null : <Link to="/signup" className='link'> Sign Up </Link>}
+                {user? <Link onClick={handleLogOut} to="/home" className='link'>Log Out</Link> : null}
+                {user? <Link to="/profile" className='link'> My Profile </Link> : null}
+                {user? <Link to='/books' className='link'> My Books </Link> : null}
+                {user? <Link to='/feed' className='link'> Feed </Link> : null }
                 </ul>
             </div>
             </nav>
