@@ -2,12 +2,13 @@ import React from 'react';
 import PostCard from './PostCard';
 import './PopUp.css'
 import {useEffect, useState} from 'react'
+import './MainCss.css'
 
 function PopUpPosts({isClicked, handlePopUp, book }) {
 
     const [posts, setPosts] = useState([])
     
-    //This useEffect allows me to update the posts inside the books everytime I add a new post
+    //This useEffect allows me to update the posts inside the books every time I add a new post
     useEffect(() => {
         fetch(`/bookposts/${book.title}`).then((response) => 
             response.json()).then((data) => setPosts(data));
@@ -24,7 +25,7 @@ function PopUpPosts({isClicked, handlePopUp, book }) {
         <div className='overlay'>
             <div className='modalContainer'>
             {displayPosts}
-            <button onClick={handlePopUp}> X </button>
+            <button className='closeBtn' onClick={handlePopUp}> X </button>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import UserContext from './UserContext'
 import BookCard from './BookCard'
 import request from 'superagent'
 import SearchBookCard from './SearchBookCard'
+import 'bulma/css/bulma.css'
 
 function Books() {
 
@@ -12,11 +13,11 @@ function Books() {
     const [userBooks, setUserBooks] = useState(user.books)
     // const [books, setBooks] = useState([])
 
-    // useEffect(() => {
-    //     fetch(`/user_books/${user.id}`).then((response) =>
-    //         response.json()).then((data) => setBooks(data));
-    //     const booksArray = books.map((item) => { return setUserBooks(item.book) })
-    // }, []);
+    //This useEffect allows me to rerender the page and still get my books array
+    useEffect(() => {
+        fetch(`/users/${user.id}`).then((response) =>
+            response.json()).then((user) => setUserBooks(user.books));
+    },);
 
 
 
@@ -43,54 +44,46 @@ function Books() {
     }
 
 
-function deleteBook(bookId) {
-    fetch(`/user_books/${bookId}`,
-        { method: 'DELETE' });
-    let newArray = userBooks.filter(el => el.id !== bookId)
-    console.log(newArray)
-    setUserBooks(newArray)
-}
-
-// console.log(search)
-// console.log(bookData)
-
-// const searchFilter = search.map((item) => console.log(item))
-
-const displayBooks = userBooks.map((book) => {
-    return <BookCard key={book.title} book={book} deleteBook={deleteBook} />
-})
-
-console.log(userBooks)
-// console.log(displayBooks)
-
-const displaySearchedBooks = bookData.map((book) => {
-    return <SearchBookCard book={book.volumeInfo} updatePosts={updatePosts} />
-})
+    function deleteBook(bookId) {
+        fetch(`/user_books/${bookId}`,
+            { method: 'DELETE' });
+        let newArray = userBooks.filter(el => el.id !== bookId)
+        setUserBooks(newArray)
+    }
 
 
-// console.log(displaySearchedBooks)
+    
+    const displayBooks = userBooks?.map((book) => {
+        return <BookCard key={book.title} book={book} deleteBook={deleteBook} />
+    })
 
-return (
-    <div style={{ backgroundColor: '#d6dfcc', backgroundSize: "cover", height: '450vh', width: '100vw' }}>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <ul>
-                <h1 style={{ fontSize: 50 }}>My Books</h1>
-                <input style={{ width: '20vw' }} onChange={searchData} type='textarea' position='left center' placeholder='Search books' />
-            </ul>
+
+
+
+    const displaySearchedBooks = bookData.map((book) => {
+        return <SearchBookCard book={book.volumeInfo} updatePosts={updatePosts} />
+    })
+
+
+
+    return (
+        <div className='content'>
+                <h1>My Books</h1>
+                <input class="input is-rounded" onChange={searchData} type='textarea' placeholder='Search books' />
+            <div className='container'>
+                <section className='section'>
+                    <div className='columns is-multiline '>
+                          {search === ("") ? displayBooks : displaySearchedBooks}
+                    </div>
+                </section>
+            </div>
+
         </div>
-        {search === ("") ? displayBooks : displaySearchedBooks}
-    </div>
 
-)
+
+
+    )
 }
 
 export default Books;
+

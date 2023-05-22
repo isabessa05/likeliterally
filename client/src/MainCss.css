@@ -48,20 +48,6 @@
   }
 
 
-
-  h1 {
-    font-family: "Akaya Kanadaka";
-  }
-
-  h2 {
-    font-family: "Akaya Kanadaka";
-  }
-
-  h3 {
-    font-family: "Akaya Kanadaka";
-  }
-
-
 /* CSS */
 .button-33 {
   background-color: #fff5ed;
@@ -87,5 +73,10 @@
   transform: scale(1.05) rotate(-1deg);
 }
 
+.closeBtn {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+}
 
   

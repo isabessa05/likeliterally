@@ -2,53 +2,29 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import UserContext from './UserContext'
-import './NavBar.css'
+import 'bulma/css/bulma.css'
 
 function NavBar({ handleLogOut }) {
 
     const { user, setUser } = useContext(UserContext)
 
     return (
-        // <nav className="menu__container">
-        //     <div class="menu">
-        // <Link to="/home">  Home  </Link>
-        // {user? null : <Link to="/login"> Log In   </Link>}
-        // {user? null : <Link to="/signup"> Sign Up </Link>}
-        // {/* Will only show the log out button if the user is logged in */}
-        // {user? <Link onClick={handleLogOut} to="/home">Log Out</Link> : null}
-        // {user? <Link to="/profile"> My Profile </Link> : null}
-        // {user? <Link to='/books'> My Books </Link> : null}
-        // {user? <Link to='/feed'> Feed </Link> : null }
-        // </div>
-        // </nav>
 
-        <nav className="menu__container">
-        <input type="checkbox" id="ham-menu"/>
-            <label for="ham-menu">
-                <div class="hide-des">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                </div>
-
-            </label>
-            <div class="full-page-green"></div>
-            <div class="ham-menu">
-                <ul class="centre-text bold-text">
-                <Link to="/home" className='link'>  Home  </Link>
-                {user? null : <Link to="/login" className='link'> Log In   </Link>}
-                {user? null : <Link to="/signup" className='link'> Sign Up </Link>}
-                {user? <Link onClick={handleLogOut} to="/home" className='link'>Log Out</Link> : null}
-                {user? <Link to="/profile" className='link'> My Profile </Link> : null}
-                {user? <Link to='/books' className='link'> My Books </Link> : null}
-                {user? <Link to='/feed' className='link'> Feed </Link> : null }
-                </ul>
+        <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand"></div>
+            <div class="navbar-menu">
+            <div class="navbar-start">
+            <Link to="/home" className='navbar-item'>  Home  </Link>
+            {user ? null : <Link to="/login" className='navbar-item'> Log In   </Link>}
+            {user ? null : <Link to="/signup" className='navbar-item'> Sign Up </Link>}
+            {user ? <Link onClick={handleLogOut} to="/home" className='navbar-item'>Log Out</Link> : null}
+            {user ? <Link to="/profile" className='navbar-item'> My Profile </Link> : null}
+            {user ? <Link to='/books' className='navbar-item'> My Books </Link> : null}
+            {user ? <Link to='/feed' className='navbar-item'> Feed </Link> : null}
             </div>
-            </nav>
-            )
+            </div>
+        </nav>
+    )
 }
 
-            export default NavBar;
+export default NavBar;

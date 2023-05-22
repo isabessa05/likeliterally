@@ -1,8 +1,8 @@
-import './PostCard.css'
+// import './PostCard.css'
 import {useContext, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import UserContext from './UserContext'
-import './MainCss.css'
+// import './MainCss.css'
 
 
 function SearchBookCard({ book, updatePosts }) {
@@ -61,7 +61,7 @@ function SearchBookCard({ book, updatePosts }) {
                 <span> {book.description} </span>
                 <br></br>
                 <br></br>
-                <button className='button-33' onClick={addBook}> Add to my book list </button>
+                <button className='button-33' onClick={addBook}> Add to books </button>
 
             </div>
         </div>

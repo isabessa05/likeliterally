@@ -1,20 +1,17 @@
 import {useContext} from 'react'
 import UserContext from './UserContext'
-import background from './homebackground.jpeg'
-import './MainCss.css'
+import 'bulma/css/bulma.css'
 function Home(){
 
-    
-
-    const {user, setUser} = useContext(UserContext) 
+    const {user} = useContext(UserContext) 
 
     return (
-        <div style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
-        height:'100vh',width:'100vw'
-        }}>
-            <div className='centered'>
-            <br></br>
-            <>{user? <h1>Welcome {user.first_name}</h1> : <h1>Please log in or Sign Up</h1>} </>
+        <div className='centered'>
+            <div className="level-item has-text-centered">
+                <h1 className='title is-centered is-1 pb-6'>Like...literally</h1>
+                <div className="level-item has-text-centered">
+            {user? <h1 className='subtitle is-centered is-4'>Welcome {user.first_name}</h1> : <h1 className='title is-centered is-1'>Please log in or Sign Up</h1>}
+            </div>
             </div>
         </div>
     )

@@ -11,6 +11,8 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Feed from "./Feed";
 import Books from "./Books";
+import 'bulma/css/bulma.css'
+// import Library from "./Library";
 
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
       method: "DELETE",
     });
     setUser(null)
+    setUsername(null)
+    setPassword(null)
     alert("You are logged out!")
   }
 
@@ -120,7 +124,7 @@ function App() {
           <PasswordContext.Provider value={{ password, setPassword }}>
             <ErrorContext.Provider value={{ error, setError }}>
 
-              <div>
+              <div className="has-background-success-light">
                 <NavBar handleLogOut={handleLogOut} />
                 <Switch>
                   <Route exact path='/home'>
@@ -141,7 +145,6 @@ function App() {
                   <Route exact path ='/books'>
                     <Books/>
                   </Route>
-
 
                 </Switch>
               </div>
