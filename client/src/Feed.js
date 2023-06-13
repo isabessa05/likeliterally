@@ -49,7 +49,7 @@ function Feed({ handlePosts }) {
 
     // display posts in a card
     const displayPosts = posts.reverse().map((post) => { 
-        return <PostCard key={post.id} post={post} />
+        return <PostCard key={post.id} post={post} classname={"column is-3"}/>
     })
 
     //Create a new post 

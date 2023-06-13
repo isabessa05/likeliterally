@@ -18,7 +18,7 @@ function PopUpPosts({isClicked, handlePopUp, book }) {
     if (!isClicked) return null;
 
     const displayPosts = posts.map((post) => {
-        return <PostCard  post={post}  />
+        return <PostCard  post={post} classname={"column is-6"} />
     })
 
     return (

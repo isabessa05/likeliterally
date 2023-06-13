@@ -3,11 +3,11 @@ import { useContext } from "react";
 import UserContext from "./UserContext";
 import "bulma/css/bulma.css";
 
-function PostCard({ post }) {
+function PostCard({ post, classname }) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="column is-5">
+    <div className={classname}>
       <div className="card">
         <div className="card-header">
           <p className="card-header-title">{user.first_name}</p>
