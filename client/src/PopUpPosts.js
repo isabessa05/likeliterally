@@ -1,8 +1,8 @@
 import React from 'react';
 import PostCard from './PostCard';
-import './PopUp.css'
+
 import {useEffect, useState} from 'react'
-import './MainCss.css'
+
 
 function PopUpPosts({isClicked, handlePopUp, book }) {
 
@@ -22,10 +22,15 @@ function PopUpPosts({isClicked, handlePopUp, book }) {
     })
 
     return (
-        <div className='overlay'>
-            <div className='modalContainer'>
+        <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+        <section className='section'>
+            <div className='columns is-multiline '>
             {displayPosts}
-            <button className='closeBtn' onClick={handlePopUp}> X </button>
+            </div>
+            </section>
+            <button class="modal-close is-large" aria-label="close" onClick={handlePopUp}> X </button>
             </div>
         </div>
     )

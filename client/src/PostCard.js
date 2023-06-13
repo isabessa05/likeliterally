@@ -7,7 +7,7 @@ function PostCard({ post }) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="column is-3">
+    <div className="column is-5">
       <div className="card">
         <div className="card-header">
           <p className="card-header-title">{user.first_name}</p>

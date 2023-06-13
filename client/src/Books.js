@@ -4,6 +4,7 @@ import BookCard from './BookCard'
 import request from 'superagent'
 import SearchBookCard from './SearchBookCard'
 import 'bulma/css/bulma.css'
+import './MainCss.css'
 
 function Books() {
 
@@ -68,7 +69,7 @@ function Books() {
 
     return (
         <div className='content'>
-                <h1>My Books</h1>
+                <h1 className='has-text-centered'>my books</h1>
                 <input class="input is-rounded" onChange={searchData} type='textarea' placeholder='Search books' />
             <div className='container'>
                 <section className='section'>

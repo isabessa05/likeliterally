@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import UserContext from './UserContext'
+import navbarImg from './literally.png'
 import 'bulma/css/bulma.css'
 
 function NavBar({ handleLogOut }) {
@@ -12,6 +13,10 @@ function NavBar({ handleLogOut }) {
 
         <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
             <div class="navbar-brand"></div>
+             <a class="navbar-item" href="https://bulma.io">
+                <img src={navbarImg} style={{width: "100px", height: "100px"}}/>
+             </a>
+
             <div class="navbar-menu">
             <div class="navbar-start">
             <Link to="/home" className='navbar-item'>  Home  </Link>

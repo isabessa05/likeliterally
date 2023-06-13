@@ -77,9 +77,9 @@ function Profile() {
             </div>
             </article>
             <div className="buttons is-fullwidth">
-            <button className="button is-success is-light is-focused" onClick={picClick}> Change Profile Picture </button>
-            {isPicClicked ? <form onSubmit={changePicture}> <input type="textarea" id="password" value={picture} onChange={handlePictureChange} placeholder='Image URL' /> <button className="button is-success is-light is-focused"> Send </button> </form> : null}
-            <button className="button is-success is-light is-focused" onClick={handleDelete}> Delete Profile </button>
+            <button className="button is-success is-light is-focused is-small is-rounded" onClick={picClick}> Change Profile Picture </button>
+            {isPicClicked ? <form onSubmit={changePicture}> <input type="textarea" className="input is-success is-small is-rounded" id="password" value={picture} onChange={handlePictureChange} placeholder='Image URL' /> <button className="button is-success is-light is-focused is-small is-rounded"> Send </button> </form> : null}
+            <button className="button is-success is-light is-focused is-small is-rounded" onClick={handleDelete}> Delete Profile </button>
             </div>
             </ul>
             </div>

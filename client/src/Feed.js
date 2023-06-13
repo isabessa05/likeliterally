@@ -11,9 +11,10 @@ function Feed({ handlePosts }) {
     const { user, setUser } = useContext(UserContext)
     const [error, setError] = useState([])
     const [posts, setPosts] = useState([])
-    const [quote, setQuote] = useState ("")
-    const [page, setPage] = useState("")
-    const [book, setBook] = useState("")
+    const [quote, setQuote] = useState ("");
+    const [page, setPage] = useState("");
+    const [book, setBook] = useState("");
+    const [refreshKey, setRefreshKey] = useState(0);
 
     useEffect(() => {
         fetch("/me").then((response) => {
@@ -23,19 +24,23 @@ function Feed({ handlePosts }) {
         });
       }, []);
 
-      useEffect(() => {
-        fetch(`/posts/${user.id}`)
-            .then((r) => {
-                if (r.ok) {
-                    r.json().then((postsData) => setPosts(postsData))
-                    setError([])
-                }
-                else {
-                    r.json().then((err) => setError(err));
-                }
-            })
-    });
+      function getPosts(){ 
+          fetch(`/posts/${user.id}`)
+              .then((r) => {
+                  if (r.ok) {
+                      r.json().then((postsData) => setPosts(postsData))
+                      setError([])
+                  }
+                  else {
+                      r.json().then((err) => setError(err));
+                  }
+              })
+      }
 
+      useEffect(() => {
+        getPosts()
+    }, [posts]);
+    
 
     //show all errors
     const allErrors = <h1 key={error}>{error.error}</h1>
@@ -43,7 +48,7 @@ function Feed({ handlePosts }) {
     const userBooks = user.books
 
     // display posts in a card
-    const displayPosts = posts.map((post) => { 
+    const displayPosts = posts.reverse().map((post) => { 
         return <PostCard key={post.id} post={post} />
     })
 
@@ -88,18 +93,20 @@ function Feed({ handlePosts }) {
     return (
         <div>
             <div style={{display: 'flex',  justifyContent:'center'}} >
+            <figure class="image is-128x128 mr-5">
+            <img className='is-rounded' src={user.picture} />
+            </figure>
             <form onSubmit= {(e) => handleSubmit(e)}>
-            <h1 style={{fontSize: 50}}> Welcome to your feed </h1>
-            <input type="textarea" id="password" className="input is-success" value={quote} onChange={handleChangeQuote} placeholder='What is happening?' />
-            <input type="textarea" id="password" className="input is-success" value={page} onChange={handleChangePage} placeholder='Page N' />
-            <div className="select is-success" >
+            <input type="textarea" id="password" className="input is-success is-small is-rounded" value={quote} onChange={handleChangeQuote} placeholder='What is happening?' />
+            <input type="textarea" id="password" className="input is-success is-small is-rounded" value={page} onChange={handleChangePage} placeholder='Page N' />
+            <div className="select is-success is-small is-rounded" >
             <select onChange= {handleChangeBook} >
                 <option>Select Book</option>
                 {user? userBooks.map(item => (<option value={item.name} key={item.id} >{item.title}</option>)) : null}
             </select>
             </div>
             <div className="buttons is-fullwidth">
-            <button className="button is-success is-light is-focused"> Post! </button>
+            <button className="button is-success is-light is-focused is-small is-rounded"> Post! </button>
             </div>
             </form>
             </div>

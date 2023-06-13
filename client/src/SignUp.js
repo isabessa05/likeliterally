@@ -3,8 +3,9 @@ import {useState, useContext, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import UserContext from './UserContext'
 import ErrorContext from './ErrorContext'
-import background from './background.svg'
-import './MainCss.css'
+
+
+
 function SignUp({handleSignUp}){
  
     //UseContext variables
@@ -45,13 +46,16 @@ function SignUp({handleSignUp}){
 }
 
     return (
-        <div className='centered' style={{ backgroundImage:`url(${background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
-        height:'99vh',width:'100vw'}}>
-          <div className='form-field'>
+        <div className="centered">
           <form onSubmit={handleSubmit}>
-            <h1>Sign Up</h1>
-            <label htmlFor="firstname">First Name</label>
+            <div className='form-field'>
+            <h1 className='title has-text-centered'>Sign Up</h1>
+            <div className="container">
+            <div class="columns is-centered">
+           <div className="column is-half">
+            <label htmlFor="firstname" >First Name</label>
             <input
+              className='input is-success is-small is-rounded'
               type="text"
               id="firstname"
               autoComplete="off"
@@ -60,6 +64,7 @@ function SignUp({handleSignUp}){
             />
             <label htmlFor="lastname">Last Name</label>
             <input
+              className='input is-success is-small is-rounded'
               type="text"
               id="username"
               autoComplete="off"
@@ -68,6 +73,7 @@ function SignUp({handleSignUp}){
             />
             <label htmlFor="lastname">Profile picture</label>
              <input
+              className='input is-success is-small is-rounded'
               type="text"
               id="picture"
               autoComplete="off"
@@ -76,6 +82,7 @@ function SignUp({handleSignUp}){
             />
             <label htmlFor="username">Username</label>
             <input
+              className='input is-success is-small is-rounded'
               type="text"
               id="username"
               autoComplete="off"
@@ -84,15 +91,20 @@ function SignUp({handleSignUp}){
             />
             <label htmlFor="password">Password</label>
             <input
+              className='input is-success is-small is-rounded'
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
-            <button href="www.google.com" type="submit">Sign Up</button>
+            
+            <button href="www.google.com" type="submit"  className='button is-success is-light is-focused is-small is-rounded mt-5'>Sign Up</button>
+            </div>
+            </div>
+            </div>
+            </div>
           </form>
-          </div>
           {error? allErrors : null}
         </div>
       )
